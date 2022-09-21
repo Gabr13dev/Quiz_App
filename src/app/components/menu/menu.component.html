@@ -1,0 +1,106 @@
+<nav class="bg-indigo-800">
+  <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+    <div class="relative flex items-center justify-between h-16">
+      <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+        <!-- Mobile menu button-->
+        <button class="inline-flex items-center justify-center p-2 rounded-md text-indigo-400" aria-expanded="false" id="icon-mobile">
+          <span class="sr-only"></span>
+          <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
+        <div class="flex-shrink-0 flex items-center">
+            <img class="block h-8 w-auto lg:hidden" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&amp;shade=500" alt="Your Company">
+            <img class="hidden h-8 w-auto lg:block" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&amp;shade=500" alt="Your Company">
+        </div>
+        <div class="hidden sm:block sm:ml-6">
+          <div class="flex space-x-4">
+            <!-- Current: "bg-indigo-900 text-white", Default: "text-indigo-300 hover:bg-indigo-700 hover:text-white" -->
+            <a href="" class="bg-indigo-900 text-white px-3 py-2 rounded-md text-sm font-medium">Home</a>
+            <a href="/Categorias" class="text-white hover:bg-indigo-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Categorias</a>
+            <a href="/Raking" class="text-white hover:bg-indigo-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Raking</a>
+            <a href="/News" class="text-white hover:bg-indigo-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Duelos</a>
+            <a href="/News" class="text-white hover:bg-indigo-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium border borde" *ngIf="isLogged">Criar</a>
+          </div>
+        </div>
+      </div>
+      <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+        <button class="bg-indigo-800 p-1 rounded-full text-indigo-400 focus:outline-none hover:outline-none" id="button-profile" *ngIf="isLogged">
+          <span class="sr-only"></span>
+          [UserName]
+        </button>
+        <!-- Profile dropdown -->
+        <div class="ml-3 relative">
+          <div>
+            <button class="bg-indigo-800 flex text-sm rounded-full focus:outline-none" aria-haspopup="true">
+              <span class="sr-only"></span>
+              <div class="h-8 w-8 rounded-full " id="avatar" *ngIf="isLogged" onmouseover="document.getElementById('user-menu').classList.remove('hidden')">
+                <svg xmlns="http://www.w3.org/2000/svg" class="svg-inline--fa fa-user-circle fa-w-16 rounded-full shadow-xl mx-auto h-8 w-8" aria-hidden="true" focusable="false" data-icon="user-circle" role="img" viewBox="0 0 496 512">
+                  <path fill="#fff" d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm0 96c48.6 0 88 39.4 88 88s-39.4 88-88 88-88-39.4-88-88 39.4-88 88-88zm0 344c-58.7 0-111.3-26.6-146.5-68.2 18.8-35.4 55.6-59.8 98.5-59.8 2.4 0 4.8.4 7.1 1.1 13 4.2 26.6 6.9 40.9 6.9 14.3 0 28-2.7 40.9-6.9 2.3-.7 4.7-1.1 7.1-1.1 42.9 0 79.7 24.4 98.5 59.8C359.3 421.4 306.7 448 248 448z"/>
+                </svg>
+              </div>
+              <div *ngIf="!isLogged">
+                <button (click)="login()" href="/News" class="text-white hover:bg-indigo-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium border borde">
+                  Entrar
+                </button>
+              </div>
+            </button>
+          </div>
+          <div class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 z-50 hidden" id="user-menu" role="menu" aria-orientation="vertical" aria-labelledby="user-menu">
+            <a href="/documents/interno.pdf" class="block px-4 py-2 text-sm text-indigo-700 hover:font-medium hover:bg-indigo-100" role="menuitem">Meus Quiz</a>
+            <a href="/Profile" class="block px-4 py-2 text-sm text-indigo-700 hover:font-medium hover:bg-indigo-100" role="menuitem">Meu Perfil</a>
+            <a href="/request/logoff" class="block px-4 py-2 text-sm text-indigo-700 hover:font-medium hover:bg-indigo-100" role="menuitem">Sair</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="translate-x-0 ease-out fixed z-30 inset-y-0 left-0 w-64 transition duration-300 transform bg-indigo-900 overflow-y-auto lg:translate-x-0 lg:static lg:inset-0 hidden" id="mobile-menu">
+    <div class="flex items-center justify-center mt-8">
+      <div class="flex items-center">
+        <span class="text-white text-2xl mx-2 font-semibold">
+        <img class="w-12 w-12" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&amp;shade=500" onclick="window.location.href = '/';" alt="Your Company">
+      </span>
+      </div>
+    </div>
+    <nav class="mt-10">
+      <a href="/" class="router-link-active router-link-exact-active flex items-center duration-200 mt-4 py-2 px-6 border-l-4 bg-indigo-600 bg-opacity-25 text-indigo-100 border-indigo-100">
+        <svg class="h-5 w-5" viewBox="0 0 576 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M280.37 148.26L96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47L488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 43a48 48 0 0 0-61 0L4.34 251.47a12 12 0 0 0-1.6 16.9l25.5 31A12 12 0 0 0 45.15 301l235.22-193.74a12.19 12.19 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0-1.7-16.93z" fill="currentColor"></path>
+        </svg><span class="mx-4">Home</span>
+      </a>
+      <a href="/Categorias" class="flex items-center duration-200 mt-4 py-2 px-6 border-l-4 border-indigo-900 text-indigo-500 hover:bg-indigo-600 hover:bg-opacity-25 hover:text-indigo-100">
+        <svg class="h-5 w-5" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M512 176.001C512 273.203 433.202 352 336 352c-11.22 0-22.19-1.062-32.827-3.069l-24.012 27.014A23.999 23.999 0 0 1 261.223 384H224v40c0 13.255-10.745 24-24 24h-40v40c0 13.255-10.745 24-24 24H24c-13.255 0-24-10.745-24-24v-78.059c0-6.365 2.529-12.47 7.029-16.971l161.802-161.802C163.108 213.814 160 195.271 160 176 160 78.798 238.797.001 335.999 0 433.488-.001 512 78.511 512 176.001zM336 128c0 26.51 21.49 48 48 48s48-21.49 48-48-21.49-48-48-48-48 21.49-48 48z" fill="currentColor"></path>
+        </svg><span class="mx-4">Categorias</span>
+      </a>
+      <a href="/Raking" class="flex items-center duration-200 mt-4 py-2 px-6 border-l-4 border-indigo-900 text-indigo-500 hover:bg-indigo-600 hover:bg-opacity-25 hover:text-indigo-100">
+        <svg class="h-5 w-5" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M493.4 24.6l-104-24c-11.3-2.6-22.9 3.3-27.5 13.9l-48 112c-4.2 9.8-1.4 21.3 6.9 28l60.6 49.6c-36 76.7-98.9 140.5-177.2 177.2l-49.6-60.6c-6.8-8.3-18.2-11.1-28-6.9l-112 48C3.9 366.5-2 378.1.6 389.4l24 104C27.1 504.2 36.7 512 48 512c256.1 0 464-207.5 464-464 0-11.2-7.7-20.9-18.6-23.4z" fill="currentColor"></path>
+        </svg><span class="mx-4">Raking</span>
+      </a>
+      <a href="/News" class="flex items-center duration-200 mt-4 py-2 px-6 border-l-4 border-indigo-900 text-indigo-500 hover:bg-indigo-600 hover:bg-opacity-25 hover:text-indigo-100">
+        <svg class="h-5 w-5" viewBox="0 0 576 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M552 64H112c-20.858 0-38.643 13.377-45.248 32H24c-13.255 0-24 10.745-24 24v272c0 30.928 25.072 56 56 56h496c13.255 0 24-10.745 24-24V88c0-13.255-10.745-24-24-24zM48 392V144h16v248c0 4.411-3.589 8-8 8s-8-3.589-8-8zm480 8H111.422c.374-2.614.578-5.283.578-8V112h416v288zM172 280h136c6.627 0 12-5.373 12-12v-96c0-6.627-5.373-12-12-12H172c-6.627 0-12 5.373-12 12v96c0 6.627 5.373 12 12 12zm28-80h80v40h-80v-40zm-40 140v-24c0-6.627 5.373-12 12-12h136c6.627 0 12 5.373 12 12v24c0 6.627-5.373 12-12 12H172c-6.627 0-12-5.373-12-12zm192 0v-24c0-6.627 5.373-12 12-12h104c6.627 0 12 5.373 12 12v24c0 6.627-5.373 12-12 12H364c-6.627 0-12-5.373-12-12zm0-144v-24c0-6.627 5.373-12 12-12h104c6.627 0 12 5.373 12 12v24c0 6.627-5.373 12-12 12H364c-6.627 0-12-5.373-12-12zm0 72v-24c0-6.627 5.373-12 12-12h104c6.627 0 12 5.373 12 12v24c0 6.627-5.373 12-12 12H364c-6.627 0-12-5.373-12-12z" fill="currentColor"></path>
+        </svg><span class="mx-4">Duelos</span>
+      </a>
+      <a href="/Criar" class="flex items-center duration-200 mt-4 py-2 px-6 border-l-4 border-indigo-900 text-indigo-500 hover:bg-indigo-600 hover:bg-opacity-25 hover:text-indigo-100">
+        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M10 12C9.44769 12 9 12.4477 9 13C9 13.5523 9.44769 14 10 14H14C14.5522 14 15 13.5523 15 13C15 12.4477 14.5522 12 14 12H10Z" fill="currentColor" />
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M4 2C2.34314 2 1 3.34314 1 5V19C1 20.6569 2.34314 22 4 22H20C21.6569 22 23 20.6569 23 19V5C23 3.34314 21.6569 2 20 2H4ZM20 4H4C3.44769 4 3 4.44769 3 5V8H21V5C21 4.44769 20.5522 4 20 4ZM3 19V10H21V19C21 19.5523 20.5522 20 20 20H4C3.44769 20 3 19.5523 3 19Z" fill="currentColor" />
+        </svg><span class="mx-4">Conteúdo</span>
+      </a>
+      <a href="<?= URL ?>/documents/interno.pdf" target="_blank" class="flex items-center duration-200 mt-4 py-2 px-6 border-l-4 border-indigo-900 text-indigo-500 hover:bg-indigo-600 hover:bg-opacity-25 hover:text-indigo-100">
+        <svg class="h-5 w-5" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path fill="currentColor" d="M504.971 199.362l-22.627-22.627c-9.373-9.373-24.569-9.373-33.941 0l-5.657 5.657L329.608 69.255l5.657-5.657c9.373-9.373 9.373-24.569 0-33.941L312.638 7.029c-9.373-9.373-24.569-9.373-33.941 0L154.246 131.48c-9.373 9.373-9.373 24.569 0 33.941l22.627 22.627c9.373 9.373 24.569 9.373 33.941 0l5.657-5.657 39.598 39.598-81.04 81.04-5.657-5.657c-12.497-12.497-32.758-12.497-45.255 0L9.373 412.118c-12.497 12.497-12.497 32.758 0 45.255l45.255 45.255c12.497 12.497 32.758 12.497 45.255 0l114.745-114.745c12.497-12.497 12.497-32.758 0-45.255l-5.657-5.657 81.04-81.04 39.598 39.598-5.657 5.657c-9.373 9.373-9.373 24.569 0 33.941l22.627 22.627c9.373 9.373 24.569 9.373 33.941 0l124.451-124.451c9.372-9.372 9.372-24.568 0-33.941z"></path>
+        </svg>
+        <span class="mx-4">Meus Quiz</span>
+      </a>
+    </nav>
+  </div>
+</nav>
