@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-  isLogged: boolean = false;
+  isLogged: boolean = true;
 
   constructor() { }
 

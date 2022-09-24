@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RouteConfigLoadEnd, Router } from '@angular/router';
+import { Game } from 'src/app/context/game/game.model';
+import { GameService } from 'src/app/context/game/game.service';
 
 @Component({
   selector: 'quiz-game-list',
@@ -7,11 +9,16 @@ import { RouteConfigLoadEnd, Router } from '@angular/router';
 })
 export class GameListComponent implements OnInit {
 
-  arrayMock = [1,2,3,4,5,6,7,8,9,10,11,12];
+  games: Game[] = [];
 
-  constructor(private router: Router) { }
+  constructor(
+    private router: Router,
+    private gameService: GameService
+  ) { }
 
   ngOnInit(): void {
+    this.gameService.getGames().subscribe(games => this.games = games);
+
   }
 
   goToGame(gameId: number) {
