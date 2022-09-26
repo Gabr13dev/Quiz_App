@@ -8,7 +8,7 @@ import { GameService } from 'src/app/context/game/game.service';
   templateUrl: './game-preview.component.html'
 })
 export class GamePreviewComponent implements OnInit {
-  game: Game = {} as Game;
+  game: Game | null = null;
 
   constructor(
     private gameService: GameService,
@@ -17,10 +17,22 @@ export class GamePreviewComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      this.gameService.getGame(params['id']).subscribe(game => {
-        this.game = game;
-      });
+       this.getGame(params['id']);
     });
+  }
+
+  gameNotFound(error: any) {
+    console.log(error);
+    alert(error);
+  }
+
+  getGame(idGame: number): void {
+    this.gameService.getGame(idGame)
+      .subscribe(game => {
+        this.game = game
+      }, error => {
+        this.gameNotFound(error);
+      });
   }
 
 }

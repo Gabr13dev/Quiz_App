@@ -13,14 +13,14 @@ export class GameService {
   constructor(private http: HttpClient) { }
 
   getGames(): Observable<Game[]> {
-    return this.http.get<Game[]>(`${environment.BASE_API}/api/Game`)
+    return this.http.get<Game[]>(`${environment.BASE_API}/api/Game/GetAllGames`)
       .pipe(
         catchError((ErrorHandler.handleError))
       );
   }
 
   getGame(idGame: number): Observable<Game> {
-    return this.http.get<Game>(`${environment.BASE_API}/api/Game?idGame=${idGame}`)
+    return this.http.get<Game>(`${environment.BASE_API}/api/Game/GetGame/${idGame}`)
       .pipe(
         catchError((ErrorHandler.handleError))
       );

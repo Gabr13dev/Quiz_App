@@ -15,6 +15,6 @@ export class ErrorHandler{
       errorMessage = `${error.toString()}`
     }
     console.error(error)
-    return throwError(() => new Error(error))
+    return throwError(() => new Error(error.message))
   }
 }
